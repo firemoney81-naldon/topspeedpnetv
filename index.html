@@ -1,23 +1,482 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+ <style>
+        /* 기본 스타일 재정의 및 부드러운 색감 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f2f5; /* 부드러운 배경색 */
+        }
+        header, section, footer {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s ease;
+        }
+        header h1 {
+            color: #007bff; /* 메인 컬러: 블루 */
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        header p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        nav {
+            background: #007bff;
+            border-radius: 12px;
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #fff;
+            margin: 0 18px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: opacity 0.3s, background-color 0.3s;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+        nav a:hover {
+            opacity: 0.9;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+        h2 {
+            border-left: 5px solid #007bff;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            color: #007bff;
+            font-size: 2rem;
+        }
+        h3 {
+            color: #0056b3; /* 서브 컬러 */
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 5px;
+        }
+        .cta {
+            display: inline-block;
+            background-color: #ff5722; /* 포인트 컬러: 오렌지 */
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(255, 87, 34, 0.3);
+        }
+        .cta:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px);
+        }
+        .service-card {
+            border: 1px solid #ddd;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background: #fdfdfd;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        form input, form select, form textarea {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        form button {
+            margin-top: 20px;
+            width: 100%;
+            cursor: pointer;
+            border: none;
+        }
+        .faq dt {
+            font-weight: 700;
+            margin-top: 20px;
+            cursor: pointer;
+            color: #007bff;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #007bff;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .faq dt:hover {
+            background-color: #f0f8ff;
+        }
+        .faq dd {
+            margin-left: 15px;
+            margin-top: 8px;
+            color: #555;
+            padding-left: 10px;
+            border-left: 2px solid #ddd;
+            line-height: 1.8;
+        }
+        .graph-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+        .graph-table th, .graph-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .graph-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+        .section-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .section-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .section-link a:hover {
+            text-decoration: underline;
+        }
+        ul.check-list li {
+            list-style: none;
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+        ul.check-list li:before {
+            content: "\2713"; /* 체크마크 유니코드 */
+            position: absolute;
+            left: 0;
+            color: #ff5722;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- JSON-LD Schema for LocalBusiness & OfferCatalog for Siheung Internet -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"LocalBusiness",
+      "name":"시흥인터넷가입전문센터",
+      "image":"https://images.pexels.com/photos/1036841/pexels-photo-1036841.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "telephone":"1800-0000",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"경기도 시흥시 배곧1로 1-1",
+        "addressLocality":"시흥시",
+        "addressRegion":"경기도",
+        "postalCode":"12345",
+        "addressCountry":"KR"
+      },
+      "url":"https://www.yourdomain.kr/",
+      "openingHours":"Mo-Sa 09:00-19:00",
+      "areaServed":"시흥시",
+      "hasOfferCatalog":{
+        "@type":"OfferCatalog",
+        "name":"시흥 인터넷 가입 서비스",
+        "itemListElement":[
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"초고속 인터넷 가입"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"기가 인터넷 가입"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"인터넷+TV 결합상품"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"WiFi 공유기 설치"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"사무실/기업 인터넷 전용선"}}
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+
+<header id="top">
+    <h1>시흥인터넷 가입, 설치 전문업체 | 2026년 현금 사은품 및 추천 순위 비교</h1>
+    <p>시흥시 전 지역 맞춤형 인터넷 컨설팅 및 신규 가입 혜택 최대 지원! <strong>배곧신도시, 은계지구, 장현지구</strong> 특화 요금제 비교.</p>
+    <a href="#quote-form" class="cta">최대 혜택 견적 받기</a>
+</header>
+
+<nav>
+    <a href="#services">주요 서비스</a>
+    <a href="#comparison">통신사 비교분석</a>
+    <a href="#price-guide">가격/비용 가이드</a>
+    <a href="#local-info">시흥 지역정보</a>
+    <a href="#reviews">고객 후기</a>
+    <a href="#quote-form">견적 신청</a>
+    <a href="#faq">FAQ</a>
+</nav>
+
+<section id="services">
+    <h2>시흥 지역별 맞춤형 인터넷 서비스</h2>
+    <p>시흥시는 신도시 개발이 활발하게 진행되는 역동적인 지역입니다. 배곧신도시, 은계지구, 장현지구와 같은 신규 택지지구에서는 일반적인 인터넷 가입 절차와 다른 특성을 보입니다. 저희 전문 업체는 2026년 최신 인프라 정보를 바탕으로 시흥시의 특성을 완벽히 반영한 맞춤형 컨설팅을 제공합니다. 단순히 저렴한곳을 찾는 것을 넘어, 고객의 사용 패턴과 거주 환경에 최적화된 상품을 추천해 드립니다.</p>
+
+    <div class="service-card">
+        <h3>초고속 인터넷 (100Mbps)</h3>
+        <p>기본적인 웹서핑, 스트리밍, 이메일 등 일상적인 용도에 적합한 표준 서비스입니다. 합리적인 가격으로 시흥 원룸 및 오피스텔 고객님들께 가장 인기 있는 상품입니다. 특히 시흥동이나 대야동 등 구도심 지역에서도 안정적인 속도를 보장합니다.</p>
+    </div>
+    <div class="service-card">
+        <h3>기가 인터넷 (500Mbps / 1Gbps)</h3>
+        <p>4K UHD 스트리밍, 대용량 파일 다운로드, 온라인 게임, AI 기반 스마트 홈 환경 등 고성능 네트워크 사용이 필수인 고객님들을 위한 프리미엄 서비스입니다. 배곧신도시와 은계지구 등 신축 아파트 단지에서는 기가급 인프라 구축이 완료되어 있어, 쾌적한 환경을 경험할 수 있습니다. 2026년 기준, 시흥시 평균 속도 만족도가 가장 높은 상품이기도 합니다.</p>
+    </div>
+    <div class="service-card">
+        <h3>인터넷 + TV 결합 상품</h3>
+        <p>가장 많은 혜택과 현금 사은품을 받을 수 있는 상품입니다. 인터넷과 IPTV를 동시에 가입하면 통신 요금이 할인되며, 결합 상품만의 추가 현금 지원금을 제공합니다. 시흥시 고객님들의 90% 이상이 선택하는 가장 저렴한 방법입니다. 사은품 비교를 통해 최대 현금 지원금을 확인해 보세요.</p>
+    </div>
+    <div class="service-card">
+        <h3>사무실/기업 인터넷 전용선</h3>
+        <p>시흥시화공단, MTV 산업단지 내 기업 고객을 위한 맞춤형 B2B 서비스입니다. 안정적인 업무 환경을 위해 전용선 설치가 가능하며, 다수의 직원을 위한 와이파이 환경 구축과 보안 강화 컨설팅을 제공합니다.</p>
+    </div>
+</section>
+
+<section id="comparison">
+    <h2>통신사별 시흥인터넷 요금 비교 분석 (SKT, KT, LGU+)</h2>
+    <p>시흥인터넷 가입을 고려할 때 가장 중요한 요소 중 하나는 통신사별 요금과 사은품 차이입니다. SK, KT, LG의 3대 통신사는 각각 다른 장단점을 가지고 있습니다. 특히 시흥 지역에서는 SKT와 KT의 인프라 구축 경쟁이 치열하며, 이는 소비자에게 더 많은 혜택으로 돌아오기도 합니다. 2026년 최신 정보를 바탕으로 통신사별 특징을 비교해 보겠습니다.</p>
+    <div class="graph-table-container">
+        <table class="graph-table">
+            <thead>
+                <tr>
+                    <th>통신사</th>
+                    <th>장점 (시흥 지역 특성 반영)</th>
+                    <th>단점 (시흥 지역 특성 반영)</th>
+                    <th>추천 대상</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>KT (케이티)</td>
+                    <td>전국 광케이블망 1위, 시흥 구도심 및 신도심 전역에서 안정적인 속도 제공. 시흥시청, 은행동 등 관공서 밀집 지역에서 강한 인프라.</td>
+                    <td>상대적으로 비싼 요금제, 사은품 규모가 SK, LG에 비해 적을 수 있음.</td>
+                    <td>시흥동, 대야동 등 구도심 거주자 및 안정적인 품질을 최우선하는 사용자.</td>
+                </tr>
+                <tr>
+                    <td>SKT (에스케이텔레콤)</td>
+                    <td>가족 결합 할인 혜택이 가장 우수. 휴대폰 요금과 연계 시 압도적인 저렴한 가격 가능. 시흥 배곧신도시, 은계지구 등 신도시 인프라 강화.</td>
+                    <td>일부 외곽 지역(거모동, 월곶동)에서 속도 편차가 발생할 수 있음.</td>
+                    <td>SKT 휴대폰을 사용하는 2인 이상 가족. 사은품과 현금지원에 민감한 사용자.</td>
+                </tr>
+                <tr>
+                    <td>LGU+ (엘지유플러스)</td>
+                    <td>TV VOD 콘텐츠 다양성 및 AI 셋톱박스 기능 우수. 요금제 대비 사은품 금액이 높은 편.</td>
+                    <td>인터넷 품질 안정성이 SKT나 KT 대비 약하다는 인식이 있음 (실제 성능은 개선됨).</td>
+                    <td>다양한 미디어를 즐기고 싶은 1인 가구, LGU+ 휴대폰 사용자.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>위 표는 2026년 시흥시의 통신사별 평균적인 장단점을 정리한 것입니다. 정확한 견적은 고객님의 주소지(특히 시흥시 배곧신도시, 은계지구, 장현지구, 목감지구 등 신축 아파트 단지)의 인프라 상황에 따라 달라질 수 있으므로 반드시 전문가의 현장 조언을 받는 것이 중요합니다.</p>
+
+    <h3>AI 기술과 시흥인터넷: 2026년 트렌드 분석</h3>
+    <p>2026년은 AI 기술의 대중화가 가속화되는 해입니다. ChatGPT, Gemini와 같은 AI 에이전트 서비스 이용 증가와 함께 스마트 홈 기기, IoT(사물인터넷) 장치가 보편화되면서 가정 내 네트워크 트래픽이 급증하고 있습니다. 시흥시도 예외는 아닙니다. 배곧신도시나 장현지구의 신축 아파트는 AI 기반 스마트 홈 시스템을 기본 탑재하는 경우가 많습니다. 이러한 환경에서는 100Mbps 초고속 인터넷으로는 AI 기기들의 실시간 데이터 처리에 병목 현상이 발생할 수 있습니다. 따라서 2026년 시흥인터넷 가입 시에는 최소 500Mbps 이상의 기가 인터넷을 추천합니다. 저희 업체는 AI 시대에 맞춰 고성능 Wi-Fi 6 공유기 무료 설치를 지원하여 시흥 고객님들의 스마트 라이프를 지원합니다.</p>
+</section>
+
+<section id="price-guide">
+    <h2>시흥인터넷 가입 비용 (가격) 및 현금 사은품 가이드</h2>
+    <p>인터넷 가입 시 가장 궁금해하는 부분은 '시흥인터넷 가격'과 '현금 사은품'일 것입니다. 2026년 기준, 통신사 본사 정책과 대리점 정책에 따라 가격은 상이합니다. 그러나 일반적으로 시흥시에서 통용되는 평균적인 요금제와 사은품 금액을 투명하게 공개하여 고객님의 합리적인 선택을 돕겠습니다.</p>
+
+    <h3>1. 시흥인터넷 요금제 평균 가격 (월 요금)</h3>
+    <p>시흥인터넷 요금제는 3년 약정 기준으로 산출됩니다. 다음 표는 2026년 3월 기준 3사 통신사의 평균적인 월 요금(부가세 포함)을 나타냅니다. (TV 결합 상품 기준)</p>
+    <table class="graph-table">
+        <thead>
+            <tr>
+                <th>상품 유형</th>
+                <th>SKT</th>
+                <th>KT</th>
+                <th>LGU+</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>인터넷 100M + TV 일반</td>
+                <td>38,500원</td>
+                <td>38,500원</td>
+                <td>38,500원</td>
+            </tr>
+            <tr>
+                <td>인터넷 500M + TV 일반</td>
+                <td>44,000원</td>
+                <td>44,000원</td>
+                <td>44,000원</td>
+            </tr>
+            <tr>
+                <td>인터넷 1G + TV 일반</td>
+                <td>49,500원</td>
+                <td>49,500원</td>
+                <td>49,500원</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>이 금액은 기본 요금이며, 가족 결합 할인(예: SKT 온가족 할인, KT 총액 결합 할인)을 적용하면 월 1만원 이상 절약이 가능합니다. 저희 전문 업체는 고객님의 휴대폰 결합 가능 여부를 꼼꼼히 확인하여 최저 요금을 제안해 드립니다. 시흥시 원룸이나 오피스텔 고객님들은 단독 상품을 선택할 경우에도 할인 혜택을 받을 수 있는 방법을 안내해 드립니다.</p>
+
+    <h3>2. 시흥인터넷 현금 사은품 지급 기준 및 비교</h3>
+    <p>현금 사은품은 대리점마다 지급 금액이 다릅니다. 이는 불법적인 업체가 아닌 '인터넷 가입 비교 사이트'나 '전문 업체'를 통해 가입해야 하는 이유입니다. 저희 업체는 시흥 지역에서 가장 많은 현금 사은품을 지급하는 것으로 유명하며, 사은품 지급 기준을 투명하게 공개합니다.</p>
+    <ul class="check-list">
+        <li><strong>현금 지원금 최대 지급:</strong> SK, KT, LG 통신사 본사 정책에 따라 최대 한도 내에서 현금을 지원합니다.</li>
+        <li><strong>가입 유형별 차등 지급:</strong> 인터넷 단독 가입보다는 인터넷+TV 결합 상품 가입 시 더 많은 현금을 지급받을 수 있습니다.</li>
+        <li><strong>신규 가입 혜택:</strong> 2026년 신규 가입 고객님에게는 추가 사은품을 제공합니다. 기존 통신사를 이용하던 고객이 해지 후 타 통신사로 이동할 때 가장 많은 혜택을 받을 수 있습니다.</li>
+    </ul>
+
+    <h3>3. 시흥인터넷 업체 선택의 장단점</h3>
+    <p>시흥인터넷 가입 시 '본사'와 '전문 대리점' 중 어디를 선택해야 할지 고민하는 분들이 많습니다. 다음 표를 통해 장단점을 비교해 보세요.</p>
+    <div class="graph-table-container">
+        <table class="graph-table">
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>본사 (SK, KT, LG 직접 가입)</th>
+                    <th>전문 대리점 (저희 업체)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>장점</strong></td>
+                    <td>공식 채널을 통한 안정감, 사은품이 적지만 확실함.</td>
+                    <td>현금 사은품 최대 지급 (본사 대비 50% 이상 추가), 요금제 비교 가능, 맞춤 컨설팅.</td>
+                </tr>
+                <tr>
+                    <td><strong>단점</strong></td>
+                    <td>사은품 금액이 적음, 타 통신사 비교가 불가능함.</td>
+                    <td>신뢰성 없는 업체 선택 시 사은품 미지급 위험 (저희 업체는 투명한 후기 시스템 보유).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>시흥인터넷 가입 시 전문 업체를 선택하는 것은 '현금지원'이라는 추가적인 혜택을 얻는 지름길입니다. 다만, "내돈내산 후기"를 꼼꼼히 확인하여 사은품을 확실하게 지급하는 믿을 수 있는 업체를 선택하는 것이 중요합니다.</p>
+
+    <h3>4. 시흥인터넷 신규 가입 시 팁</h3>
+    <p>신규 가입 시 '설치비'가 발생하는 경우가 많습니다. 2026년 기준으로 인터넷 설치비는 약 2만원~3만원 수준이며, TV 설치비는 별도입니다. 다만, 신규 가입 혜택으로 설치비를 면제해주는 프로모션을 진행하는 경우가 많으니 견적 신청 시 꼭 문의해 보세요. '디시인사이드'나 '네이버 지식인' 등에서 시흥 지역 인터넷 가입 후기를 검색해보면 혜택을 많이 받는 방법들이 공유되고 있습니다.</p>
+</section>
+
+<section id="local-info">
+    <h2>시흥 지역별 인터넷 인프라 및 특성 분석</h2>
+    <p>시흥시는 신도시와 구도심이 혼재되어 있어 지역별로 인터넷 인프라 환경이 다릅니다. 이는 인터넷 가입 시 요금제 선택이나 속도 안정성에 영향을 미칩니다. 시흥시의 주요 지역별 인프라 특징을 분석해 보겠습니다.</p>
+
+    <h3>시흥 신규 택지지구 (배곧신도시, 은계지구, 장현지구)</h3>
+    <p>배곧신도시, 은계지구, 장현지구는 2010년대 후반부터 2020년대 초반에 걸쳐 조성된 신규 택지지구입니다. 이들 지역은 시흥시에서도 가장 인터넷 인프라가 잘 갖춰진 곳으로 평가됩니다. KT와 SKT 모두 광케이블 FTTH(Fiber To The Home) 방식으로 인프라를 구축하여 1Gbps 이상의 기가 인터넷 서비스 이용에 전혀 문제가 없습니다. 신축 아파트의 경우, 단지 내 통신실에서부터 각 세대까지 광케이블이 연결되어 있어 시흥에서 가장 쾌적한 인터넷 환경을 자랑합니다. 특히 배곧신도시와 은계지구는 젊은 층의 유입이 많아 고화질 스트리밍 및 온라인 게임 사용률이 높아 기가 인터넷 수요가 높습니다. 저희 업체는 이들 지역에서 가장 많은 설치 경험을 보유하고 있습니다.</p>
+
+    <h3>시흥 구도심 지역 (정왕동, 신천동, 대야동, 은행동, 거모동)</h3>
+    <p>정왕동, 신천동, 대야동, 은행동 등 구도심 지역은 아파트보다는 다세대 주택이나 빌라가 많은 곳입니다. 이들 지역에서는 통신사별 인프라 차이가 크게 나타날 수 있습니다. 일부 노후된 건물에서는 광케이블 대신 VDSL(Very-high-bitrate Digital Subscriber Line) 방식이 사용되어 속도 제약(100Mbps 초과 불가)이 있을 수 있습니다. 따라서 이들 지역의 고객님은 가입 전 '설치 가능 여부' 조회가 필수적입니다. 저희 전문 업체는 시흥시 거모동, 정왕동 등 외곽 지역의 설치 가능 여부를 정확하게 확인하여 고객님께 불필요한 가입 절차를 줄여드립니다.</p>
+
+    <h3>시흥 산업단지 및 외곽 지역 (시화공단, 월곶동, 오이도)</h3>
+    <p>시화 MTV, 시화공단 등 산업단지 지역은 기업 인터넷 수요가 높습니다. 이곳에서는 일반 가정용 인터넷이 아닌 기업용 전용선 서비스가 제공됩니다. 월곶동이나 오이도 등 해안가 지역은 지리적 특성상 인프라 구축에 어려움이 있어 속도 품질에 편차가 있을 수 있습니다. 저희는 시흥 전역의 인프라 데이터를 분석하여 최적의 통신사를 추천해 드립니다.</p>
+</section>
+
+<section id="reviews">
+    <h2>시흥인터넷 고객 후기 및 사례 (내돈내산)</h2>
+    <p>실제 시흥 고객님들의 후기는 업체를 선택하는 데 중요한 기준이 됩니다. 저희 업체는 투명한 후기 시스템을 통해 고객님들의 생생한 경험을 공유합니다. 고객님들은 '현금지원', '설치 속도', '친절도' 등을 기준으로 업체 순위를 평가하며, 저희는 항상 상위권에 랭크되어 있습니다.</p>
+
+    <div class="service-card">
+        <h3>사례 1: 배곧신도시 A아파트 신규 입주 고객</h3>
+        <p>“배곧신도시로 이사 오면서 시흥인터넷 가입을 알아봤습니다. 여러 업체에 문의했는데, 현금지원 금액도 가장 높았고, 무엇보다 설치 당일 바로 처리가 되어서 만족했습니다. 2026년 신규 아파트라 기가 인터넷 속도도 매우 빠르고, TV 결합 상품으로 요금 할인까지 받았습니다. 추천합니다!”</p>
+    </div>
+    <div class="service-card">
+        <h3>사례 2: 은계지구 원룸 거주 고객 (원룸 이사)</h3>
+        <p>“은계지구 원룸으로 이사를 하면서 인터넷도 새로 설치해야 했습니다. 원룸은 사은품이 적다는 얘기가 많았는데, 여기서는 다른 업체보다 현금지원 금액을 많이 받았고, 설치 기사님도 친절하게 Wi-Fi 공유기 설정까지 도와주셨습니다. 시흥 원룸 이사하시는 분들께 싼곳으로 추천해요.”</p>
+    </div>
+    <div class="service-card">
+        <h3>사례 3: 정왕동 사무실 이전 고객</h3>
+        <p>“정왕동에 있는 사무실을 이전하면서 기업 인터넷 전용선 설치를 맡겼습니다. 빠른 업무 처리가 필요했는데, 상담부터 설치까지 하루 만에 끝내주셨습니다. 특히 기존 통신사 해지 절차까지 대리해주셔서 편리했습니다. 전문적인 사무실 인터넷 업체로 인정합니다.”</p>
+    </div>
+</section>
+
+<section id="quote-form">
+    <h2>시흥인터넷 1:1 맞춤형 무료 견적 신청 (사은품 조회)</h2>
+    <p>아래 폼을 작성해주시면 2026년 최신 현금 사은품 정보를 바탕으로 고객님께 가장 유리한 통신사 및 요금제를 비교 분석하여 맞춤 견적을 제공해 드립니다. 견적 신청은 무료이며, 5분 이내로 연락드리겠습니다.</p>
+    <form action="/submit-estimate" method="POST" aria-describedby="quote-description">
+        <p id="quote-description">시흥인터넷 가입 견적을 위한 필수 정보를 입력해 주세요.</p>
+
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" placeholder="홍길동" required />
+
+        <label for="phone">연락처</label>
+        <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required />
+
+        <label for="address">설치 주소 (시흥시)</label>
+        <input type="text" id="address" name="address" placeholder="예: 시흥시 배곧1로 1-1" required />
+
+        <label for="service-type">희망 서비스 유형</label>
+        <select id="service-type" name="type" required>
+            <option value="">선택하세요</option>
+            <option value="초고속인터넷">초고속 인터넷 (100Mbps)</option>
+            <option value="기가인터넷">기가 인터넷 (500Mbps/1Gbps)</option>
+            <option value="인터넷+TV결합">인터넷 + TV 결합 상품</option>
+            <option value="사무실인터넷">사무실/기업 인터넷 전용선</option>
+        </select>
+
+        <label for="current-carrier">현재 사용 통신사 (휴대폰)</label>
+        <select id="current-carrier" name="current-carrier">
+            <option value="none">해당 없음</option>
+            <option value="SKT">SKT</option>
+            <option value="KT">KT</option>
+            <option value="LGU+">LGU+</option>
+            <option value="MVNO">알뜰폰 (MVNO)</option>
+        </select>
+
+        <label for="memo">문의사항 (이사 예정일, 기타 요청사항)</label>
+        <textarea id="memo" name="memo" placeholder="이사 예정일(2026년 3월 1일) 및 궁금한 점을 적어주세요."></textarea>
+
+        <button type="submit" class="cta">견적 및 사은품 조회 요청하기</button>
+    </form>
+</section>
+
+<section id="faq">
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <dl class="faq">
+        <dt>1. 시흥인터넷 가입 시 현금 사은품은 언제 지급되나요?</dt>
+        <dd>인터넷 설치 완료 후 1~3일 이내에 고객님 계좌로 현금 사은품이 지급됩니다. 정확한 지급일정은 가입 시 안내해 드립니다.</dd>
+
+        <dt>2. 시흥시 신규 아파트 단지(은계지구, 장현지구)에서도 기가 인터넷 설치가 가능한가요?</dt>
+        <dd>네, 대부분의 시흥 신규 아파트 단지는 기가 인터넷 인프라가 구축되어 있습니다. 다만, 특정 호실이나 건물 노후도에 따라 달라질 수 있으므로 정확한 주소지 조회가 필요합니다.</dd>
+
+        <dt>3. 인터넷 가입 시 휴대폰 결합은 어떻게 해야 가장 저렴한가요?</dt>
+        <dd>SKT, KT, LGU+ 모두 휴대폰 결합 상품이 존재합니다. 특히 SKT는 온가족 결합, KT는 총액 결합이 유명하며, 가족 구성원 수와 휴대폰 요금제에 따라 할인율이 달라집니다. 저희 전문가가 고객님의 휴대폰 정보를 바탕으로 최적의 결합 할인을 찾아드립니다.</dd>
+
+        <dt>4. 기존 통신사 해지 위약금은 어떻게 계산되나요?</dt>
+        <dd>약정 기간이 남은 상태에서 해지 시 위약금이 발생합니다. 정확한 위약금 금액은 기존 통신사 고객센터를 통해 확인해야 합니다. 저희 업체에서 위약금 조회를 도와드리며, 신규 가입 혜택으로 위약금을 일부 상쇄하는 방법을 안내해 드릴 수 있습니다.</dd>
+
+        <dt>5. 시흥 원룸 이사 시 인터넷 재설치 비용은 얼마인가요?</dt>
+        <dd>시흥시 내 원룸 이사 시 인터넷 재설치 비용은 약 1~2만원 정도 발생할 수 있습니다. 다만, 신규 가입이 아닌 '이전 설치'로 진행될 경우 비용이 다소 저렴하며, 약정 기간이 남아있다면 가입 업체에 문의하여 이전 설치를 요청해야 합니다.</dd>
+    </dl>
+</section>
+
+<section class="section-link">
+    <h2>신뢰성 있는 외부 정보 (Reference)</h2>
+    <ul class="check-list">
+        <li><a href="https://www.korea.kr/policy/pressReleaseView.do?newsId=156429598" target="_blank">과학기술정보통신부 - 인터넷 속도 평가 관련 정부 보도자료</a> (정부 정책 확인)</li>
+        <li><a href="https://namu.wiki/w/%EC%9D%B8%ED%84%B0%EB%84%B7%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%9C%EA%B3%B5%EC%97%85%EC%B2%B4" target="_blank">나무위키 - 인터넷 서비스 제공업체 (ISP)</a> (기술 용어 및 역사 확인)</li>
+        <li><a href="https://www.siheung.go.kr/main/index.do" target="_blank">시흥시청 공식 웹사이트</a> (시흥시 행정구역 및 지역 정보 확인)</li>
+        <li><a href="https://www.epost.go.kr/search/post/searchPostNew.retrieve" target="_blank">우정사업본부 우편번호 안내</a> (정확한 주소지 정보 확인)</li>
+        <li><a href="https://www.kca.go.kr/index.do" target="_blank">한국소비자원</a> (통신 서비스 이용약관 및 소비자 보호 관련 정보)</li>
+    </ul>
+</section>
+
+  
